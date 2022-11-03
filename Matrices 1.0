@@ -1,0 +1,95 @@
+﻿ing System;
+ing System.Collections.Generic;
+
+namespace arreglos
+{
+
+    public static class Extensions
+    {
+        public static int findIndex<T>(this T[] array, T item)
+        {
+            return Array.FindIndex(array, val => val.Equals(item));
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ', '.' };
+
+            int[,] clave = { { 1, 2, 1 }, { 0, -1, 3 }, { 2, 1, 0 } };
+            int n = 4;
+            int[,] matriz = new int[3, 3];
+
+            int index = alfabeto[0];
+            matriz[0, 1] = index;
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.WriteLine(clave[i, j] + " ");
+                }
+                Console.WriteLine(' ');
+            }
+            Console.WriteLine(index);
+
+            Console.WriteLine("Matriz de:");
+            int a = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Matriz por:");
+            int b = int.Parse(Console.ReadLine());
+
+
+            int[,] bidimencion;
+            bidimencion = new int[a, b];
+
+
+            Random numero = new Random();
+
+            //imprimiendo diagonal de matriz 
+            Console.WriteLine("Diagonal de la matriz la componen");
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+
+                    if (i == j) { Console.Write(bidimencion[i, j]); }
+                    else { Console.Write("  "); }
+
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            //imprimiendo inversa de matriz 
+            Console.WriteLine("Inversa de la matriz la compone:");
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+
+                    if (j + i == b - 1) { Console.Write(bidimencion[i, j]); }//b-1 por la posicion 0 que exite en este caso
+                    else { Console.Write("  "); }
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Impresion de la matriz");
+            //impresion de la matriz
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+
+                    Console.Write(bidimencion[i, j]);
+
+                    if (j + 1 == b) { Console.WriteLine(); } else { Console.Write(","); }
+
+                }
+
+            }
+        }
+    }
+}
